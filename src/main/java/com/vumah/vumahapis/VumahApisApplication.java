@@ -15,6 +15,7 @@ public class VumahApisApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
+                        .allowedHeaders("*")
                         .allowedMethods("*")
                         .allowedOrigins("*");
             }
