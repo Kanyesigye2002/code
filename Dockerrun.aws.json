@@ -1,0 +1,11 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "Image": {
+    "Name": "public.ecr.aws/p9x6c1p0/vumah:latest"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "8080"
+    }
+  ]
+}
