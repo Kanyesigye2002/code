@@ -27,11 +27,7 @@ public class RestService {
 //    public String getAll() {
 //        OkHttpClient client = new OkHttpClient();
 //        Request request = new Request.Builder()
-//                .url("https://api.vehiclesmart.com/rest/vehicleData
-//                        ?reg=<your-registration-goes-here>
-//                &appid=your-api-key
-//                &isRefreshing=false
-//                &dvsaFallbackMode=false")
+//                .url("https://api.vehiclesmart.com/rest/vehicleData?reg=MA68HXM&appid=vumah-c6jKwNxbtuNS384aNdd21Q&isRefreshing=false&dvsaFallbackMode=false")
 //                .get()
 //                .addHeader("accept", "application/json")
 //                .addHeader("cache-control", "no-cache")
@@ -46,7 +42,7 @@ public class RestService {
     }
 
     public String getVehicleData() {
-        String url = "https://api.vehiclesmart.com/rest/vehicleData?reg=MA68HXM&appid=c6jKwNxbtuNS384aNdd21Q&isRefreshing=false&dvsaFallbackMode=false";
+        String url = "https://api.vehiclesmart.com/rest/vehicleData?reg=MA68HXM&appid=vumah-c6jKwNxbtuNS384aNdd21Q&isRefreshing=false&dvsaFallbackMode=false";
 
         Object response = this.restTemplate.getForObject(url, Object.class);
 
@@ -57,7 +53,7 @@ public class RestService {
 
     public String getVehicleWithCustomHeaders(String code) throws Exception {
 
-        String url = "https://api.vehiclesmart.com/rest/vehicleData?reg=MA68HXM&appid=c6jKwNxbtuNS384aNdd21Q&isRefreshing=false&dvsaFallbackMode=false";
+        String url = "https://api.vehiclesmart.com/rest/vehicleData?reg=MA68HXM&appid=vumah-c6jKwNxbtuNS384aNdd21Q&isRefreshing=false&dvsaFallbackMode=false";
 
         // create headers
         HttpHeaders headers = new HttpHeaders();
