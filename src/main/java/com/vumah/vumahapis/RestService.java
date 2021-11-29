@@ -23,48 +23,19 @@ public class RestService {
                 .build();
     }
 
+    public String getVehicleWithCustomHeaders(String reg) {
 
-//    public String getAll() {
-//        OkHttpClient client = new OkHttpClient();
-//        Request request = new Request.Builder()
-//                .url("https://api.vehiclesmart.com/rest/vehicleData?reg=MA68HXM&appid=vumah-c6jKwNxbtuNS384aNdd21Q&isRefreshing=false&dvsaFallbackMode=false")
-//                .get()
-//                .addHeader("accept", "application/json")
-//                .addHeader("cache-control", "no-cache")
-//                .build();
-//        Response response = client.newCall(request).execute();
-//        return response;
-//    }
+        //try -> MA68HXM
 
-    public String getPostsPlainJSON() {
-        String url = "https://jsonplaceholder.typicode.com/posts";
-        return this.restTemplate.getForObject(url, String.class);
-    }
-
-    public String getVehicleData() {
-        String url = "https://api.vehiclesmart.com/rest/vehicleData?reg=MA68HXM&appid=vumah-c6jKwNxbtuNS384aNdd21Q&isRefreshing=false&dvsaFallbackMode=false";
-
-        Object response = this.restTemplate.getForObject(url, Object.class);
-
-        System.out.println("Vehicle: " + response);
-
-        return response.toString();
-    }
-
-    public String getVehicleWithCustomHeaders(String code) throws Exception {
-
-        String url = "https://api.vehiclesmart.com/rest/vehicleData?reg=MA68HXM&appid=vumah-c6jKwNxbtuNS384aNdd21Q&isRefreshing=false&dvsaFallbackMode=false";
+        String url = "https://api.vehiclesmart.com/rest/vehicleData?reg="+ reg +"&appid=vumah-c6jKwNxbtuNS384aNdd21Q&isRefreshing=false&dvsaFallbackMode=false";
 
         // create headers
         HttpHeaders headers = new HttpHeaders();
-        // set custom header
         headers.set("accept", "accept");
         headers.set("cache-control", "no-cache");
 
         // build the request
         HttpEntity<String> entity = new HttpEntity<>("body", headers);
-
-        // use `exchange` method for HTTP call
 
         try {
             ResponseEntity<String> response = this.restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
@@ -72,11 +43,11 @@ public class RestService {
             if (response.getStatusCode() == HttpStatus.OK) {
                 return response.getBody();
             } else {
-                return "There is no such a company with such a company code: " + code;
+                return "No registered Vehicle found: " + reg;
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return "There is no such a company with such a company code: " + code;
+            return "No registered Vehicle found: " + reg;
         }
     }
 
