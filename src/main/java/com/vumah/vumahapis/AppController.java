@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 public class AppController {
 
-    private RestService restService;
+    private final RestService restService;
 
     public AppController(RestService restService) {
         this.restService = restService;
@@ -19,10 +19,10 @@ public class AppController {
 
     @GetMapping
     public String testApp() {
-        return "Hello Welcome to GCC Api for more access ask the Admins!";
+        return "Welcome to vumah Api Connector";
     }
 
-    @GetMapping("/{code}")
+    @GetMapping("company-check/{code}")
     public ResponseEntity<?> getBusinessInfo(@PathVariable(value = "code") String code) throws Exception {
 
         String response = restService.getPostWithCustomHeaders(code);
@@ -32,6 +32,13 @@ public class AppController {
         return ResponseEntity.ok(response);
     }
 
-}
+    @GetMapping("vehicle-check/{reg}")
+    public ResponseEntity<?> getVehicleInfo(@PathVariable(value = "reg") String reg) throws Exception {
 
-//public.ecr.aws/p9x6c1p0/vumah
+        String response = restService.getVehicleWithCustomHeaders(reg);
+        System.out.println(response);
+
+        return ResponseEntity.ok(response);
+    }
+
+}
